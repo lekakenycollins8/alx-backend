@@ -13,6 +13,7 @@ def index_range(page: int, page_size: int) -> Tuple:
     end_index = start_index + page_size
     return (start_index, end_index)
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -36,12 +37,12 @@ class Server:
         """Get page from dataset"""
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        
+
         try:
             index_range_t = index_range(page, page_size)
             start_index = index_range_t[0]
             end_index = index_range_t[1]
-        
+
             return self.dataset()[start_index:end_index]
         except IndexError:
             return []
@@ -57,4 +58,4 @@ class Server:
             'next_page': page + 1 if page + 1 < total_pages else None,
             'prev_page': page - 1 if page > 1 else None,
             'total_pages': total_pages
-        }
+            }
