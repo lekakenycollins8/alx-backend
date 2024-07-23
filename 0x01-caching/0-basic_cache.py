@@ -12,7 +12,7 @@ class BasicCache(BaseCaching):
         if key or item is None:
             pass
         self.cache_data[key] = item
-    
+
     def get(self, key):
         """returns cached data"""
         if key is None or key not in self.cache_data.keys():
